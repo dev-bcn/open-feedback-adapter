@@ -1,6 +1,19 @@
-import {Sessionize, Speaker} from "@/app/api/2024/schedule/sessionize.type";
+import {
+    QuestionAnswers,
+    Sessionize,
+    Speaker
+} from "@/app/api/2024/schedule/sessionize.type";
 import axios from "axios";
 
+
+export const extractSessionTags = (
+    questionAnswers: QuestionAnswers[],
+) => {
+    return questionAnswers
+        .filter((question) => question.questionId === 66341)
+        .map((question) => question.answerValue)
+        .at(0)?.split(",");
+};
 
 const fetchSpeakerDetails = (speakers: Speaker[], speakerId: string) => {
     const speaker = speakers.filter((speaker) => speaker.id === speakerId).at(0);
@@ -53,7 +66,7 @@ const convertSessionizeToOpenFeedback = (
             id: sessionId,
             startTime: session.startsAt ?? "",
             endTime: session.endsAt ?? "",
-            tags: [],
+            tags: extractSessionTags(session.questionAnswers),
             trackTitle: "",
         };
 
