@@ -27,11 +27,16 @@ const fetchSpeakerDetails = (speakers: Speaker[], speakerId: string) => {
 };
 
 const fetchSessionizeData = async (): Promise<Sessionize> => {
-    const data = await axios.get<Sessionize>(
-        "https://sessionize.com/api/v2/ncjn5vz9/view/All",
-    );
-    console.log("Data fetch");
-    return data.data;
+
+    console.log("Fetching sessionize data", process.env.SESSIONIZE_URL);
+
+    if (process.env.SESSIONIZE_URL) {
+        const data = await axios.get<Sessionize>(
+            process.env.SESSIONIZE_URL,
+        );
+        return data.data;
+    }
+    throw new Error("No sessionize url found");
 };
 
 const convertSessionizeToOpenFeedback = (
