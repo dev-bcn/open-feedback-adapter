@@ -146,7 +146,7 @@ describe("Open Feedback adapter tests", () => {
 
             }
         };
-        const result = convertSessionizeToOpenFeedback(sampleData)
+        const result: OpenFeedbackModel = convertSessionizeToOpenFeedback(sampleData)
 
         expect(result).not.toBeNull();
         expect(result).toStrictEqual(expectedResult);
