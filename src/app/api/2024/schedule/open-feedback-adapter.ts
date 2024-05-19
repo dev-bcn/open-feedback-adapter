@@ -1,10 +1,10 @@
 import {
+    CategoryItem,
     QuestionAnswers,
     Sessionize,
     Speaker
 } from "@/app/api/2024/schedule/sessionize.type";
 import axios from "axios";
-
 
 export const extractSessionTags = (
     questionAnswers: QuestionAnswers[],
@@ -15,7 +15,7 @@ export const extractSessionTags = (
         .at(0)?.split(",");
 };
 
-const fetchSpeakerDetails = (speakers: Speaker[], speakerId: string) => {
+const fetchSpeakerDetails = (speakers: Speaker[], speakerId: string): OpenFeedbackSpeaker => {
     const speaker = speakers.filter((speaker) => speaker.id === speakerId).at(0);
 
     return {
@@ -24,16 +24,16 @@ const fetchSpeakerDetails = (speakers: Speaker[], speakerId: string) => {
         photoUrl: speaker?.profilePicture,
         socials: [
             {
-                name: "twitter",
+                name: "Twitter",
                 link: speaker?.links
                     .filter((link) => link.linkType === "Twitter")
-                    .at(0),
+                    .at(0)?.url,
             },
             {
-                name: "linkedin",
+                name: "LinkedIn",
                 link: speaker?.links
                     .filter((link) => link.linkType === "LinkedIn")
-                    .at(0),
+                    .at(0)?.url,
             },
         ],
     };
@@ -52,6 +52,14 @@ const fetchSessionizeData = async (): Promise<Sessionize> => {
     throw new Error("No sessionize url found");
 };
 
+const extractSessionizeTracks = (sessionizeJson: Sessionize): CategoryItem | undefined => {
+    return sessionizeJson.categories.filter((category) => category.title === "Track").at(0);
+}
+
+const matchSessionTrack = (tracks: CategoryItem | undefined, categoryItems: number[]): string | undefined => {
+    return tracks?.items.filter((track) => categoryItems.includes(track.id)).at(0)?.name;
+}
+
 const convertSessionizeToOpenFeedback = (
     sessionizeJson: Sessionize,
 ): OpenFeedbackModel => {
@@ -67,7 +75,7 @@ const convertSessionizeToOpenFeedback = (
             startTime: session.startsAt ?? "",
             endTime: session.endsAt ?? "",
             tags: extractSessionTags(session.questionAnswers),
-            trackTitle: "",
+            trackTitle: matchSessionTrack(extractSessionizeTracks(sessionizeJson), session.categoryItems),
         };
 
         session.speakers.forEach((speakerId) => {

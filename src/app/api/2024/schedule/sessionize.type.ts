@@ -2,7 +2,7 @@ export interface Sessionize {
     readonly sessions: Session[];
     readonly speakers: Speaker[];
     readonly questions: any[];
-    readonly categories: any[];
+    readonly categories: CategoryItem[];
     readonly rooms: Room[];
 }
 
@@ -21,7 +21,7 @@ export interface Session {
     readonly isServiceSession: boolean;
     readonly isPlenumSession: boolean;
     readonly speakers: string[];
-    readonly categoryItems: any[];
+    readonly categoryItems: number[];
     readonly questionAnswers: any[];
     readonly roomID: number | null;
     readonly liveURL: null;
@@ -35,14 +35,14 @@ export interface Speaker {
     readonly id: string;
     readonly firstName: string;
     readonly lastName: string;
-    readonly bio: null;
+    readonly bio: string;
     readonly tagLine: string;
     readonly profilePicture: string;
     readonly isTopSpeaker: boolean;
     readonly links: Link[];
     readonly sessions: number[];
     readonly fullName: string;
-    readonly categoryItems: any[];
+    readonly categoryItems: CategoryItem[];
     readonly questionAnswers: QuestionAnswers[];
 }
 
@@ -54,6 +54,17 @@ export interface Link {
 
 export type LinkType = "Twitter" | "LinkedIn";
 
+export interface Item {
+    readonly id: number;
+    readonly name: string;
+    readonly sort: number;
+}
+
+export interface CategoryItem {
+    readonly id: number;
+    readonly title: string;
+    readonly items: Item[];
+}
 
 export interface QuestionAnswers {
     questionId: number;

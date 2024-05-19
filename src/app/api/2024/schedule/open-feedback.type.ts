@@ -10,7 +10,24 @@ type OpenFeedbackSessions = {
     };
 };
 
+type SocialLink = {
+    name: string;
+    link: string | undefined;
+}
+
+type OpenFeedbackSpeakers = {
+    [id: string]: OpenFeedbackSpeaker;
+}
+
+type OpenFeedbackSpeaker = {
+    id: string;
+    name: string | undefined;
+    photoUrl: string | undefined;
+    socials: SocialLink[];
+
+}
+
 type OpenFeedbackModel = {
     sessions: OpenFeedbackSessions;
-    speakers: any; // Define a more detailed type based on available data
+    speakers: OpenFeedbackSpeakers; // Define a more detailed type based on available data
 };
