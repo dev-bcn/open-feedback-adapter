@@ -5,7 +5,6 @@ describe("GET schedule api", () => {
 
         const response = await GET();
         const json = await response.json();
-        console.log(json)
 
         expect(json).not.toBeNull();
     });
