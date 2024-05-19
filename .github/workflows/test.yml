@@ -1,4 +1,4 @@
-name: unit test
+name: Unit tests
 
 on:
   push:
@@ -15,10 +15,11 @@ jobs:
         node-version: [18.x, 22.x]
 
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/cache@v4.0.2
+    - uses: actions/checkout@v3
+    - name: Cache node modules
       id: cache-npm
-      with: 
+      uses: actions/cache@v4.0.2
+      with:
        path: ~/.npm
        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
        restore-keys: |
@@ -32,7 +33,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Build
+    - name: Tests
       run: |
-        npm install
-        npx test
+        npm ci
+        npm run test
