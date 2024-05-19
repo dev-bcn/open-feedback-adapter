@@ -1,5 +1,7 @@
 # OpenFeedback - sessionize adapter
 
+[![Unit tests](https://github.com/dev-bcn/open-feedback-adapter/actions/workflows/test.yml/badge.svg)](https://github.com/dev-bcn/open-feedback-adapter/actions/workflows/test.yml)
+
 ## Description
 
 This project adapts sessionize output to work with OpenFeedback.
