@@ -1,6 +1,7 @@
 # OpenFeedback - sessionize adapter
 
 [![Unit tests](https://github.com/dev-bcn/open-feedback-adapter/actions/workflows/test.yml/badge.svg)](https://github.com/dev-bcn/open-feedback-adapter/actions/workflows/test.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=dev-bcn_open-feedback-adapter&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=dev-bcn_open-feedback-adapter)
 
 [![DevBcn](/public/logo.png)](https://www.devbcn.com)
 
