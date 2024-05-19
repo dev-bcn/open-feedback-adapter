@@ -12,7 +12,7 @@ export const extractSessionTags = (
     return questionAnswers
         .filter((question) => question.questionId === 66341)
         .map((question) => question.answerValue)
-        .at(0)?.split(",");
+        .at(0)?.split(",").map((tag) => tag.trim());
 };
 
 const fetchSpeakerDetails = (speakers: Speaker[], speakerId: string): OpenFeedbackSpeaker => {

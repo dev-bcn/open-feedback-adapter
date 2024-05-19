@@ -124,7 +124,7 @@ describe("Open Feedback adapter tests", () => {
                     trackTitle: "Agile, leadership, diversity (Management techniques, diversity and inclusivity, ...)",
                     endTime: "",
                     startTime: "",
-                    tags: ["Lean", " Agile", " TeamManagement"],
+                    tags: ["Lean", "Agile", "TeamManagement"],
                 }
             },
             speakers: {
