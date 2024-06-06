@@ -1,4 +1,3 @@
-### GET request to example server
 GET localhost:3000/api/2024/schedule
 Accept: application/json
 
