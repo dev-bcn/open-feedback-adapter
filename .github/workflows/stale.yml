@@ -1,0 +1,22 @@
+name: LGTM Approver
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  approve:
+
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: lgtm action
+        uses: jonyhy96/lgtm-action@v1.1.2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          owners: CODEOWNERS
