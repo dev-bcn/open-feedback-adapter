@@ -3,7 +3,7 @@ import {
     QuestionAnswers,
     Sessionize,
     Speaker
-} from "@/app/api/2024/schedule/sessionize.type";
+} from "@/types/sessionize.type";
 import axios from "axios";
 
 export const extractSessionTags = (
@@ -39,17 +39,10 @@ const fetchSpeakerDetails = (speakers: Speaker[], speakerId: string): OpenFeedba
     };
 };
 
-const fetchSessionizeData = async (): Promise<Sessionize> => {
-
-    console.log("Fetching sessionize data", process.env.SESSIONIZE_URL);
-
-    if (process.env.SESSIONIZE_URL) {
-        const data = await axios.get<Sessionize>(
-            process.env.SESSIONIZE_URL,
-        );
-        return data.data;
-    }
-    throw new Error("No sessionize url found");
+const fetchSessionizeData = async (url: string): Promise<Sessionize> => {
+    console.log("Fetching sessionize data", url);
+    const data = await axios.get<Sessionize>(url,);
+    return data.data;
 };
 
 const extractSessionizeTracks = (sessionizeJson: Sessionize): CategoryItem | undefined => {

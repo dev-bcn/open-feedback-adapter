@@ -1,7 +1,7 @@
 import {
     convertSessionizeToOpenFeedback
-} from "@/app/api/2024/schedule/open-feedback-adapter";
-import {Sessionize} from "@/app/api/2024/schedule/sessionize.type";
+} from "@/components/open-feedback-adapter";
+import {Sessionize} from "@/types/sessionize.type";
 
 describe("Open Feedback adapter tests", () => {
 

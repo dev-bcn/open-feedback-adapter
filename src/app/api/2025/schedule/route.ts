@@ -5,7 +5,7 @@ import {
 } from "@/components/open-feedback-adapter";
 
 export async function GET() {
-    const payload = await fetchSessionizeData(process.env.SESSIONIZE_URL_2024!);
+    const payload = await fetchSessionizeData(process.env.SESSIONIZE_URL_2025!);
 
     const converted = convertSessionizeToOpenFeedback(payload);
     return NextResponse.json(converted);
