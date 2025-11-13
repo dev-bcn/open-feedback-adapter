@@ -10,7 +10,7 @@
     "test": "jest --coverage"
   },
   "dependencies": {
-    "@next/env": "^14.2.4",
+    "@next/env": "^16.0.2",
     "axios": "1.12.2",
     "next": "15.5.3",
     "react": "^18",
