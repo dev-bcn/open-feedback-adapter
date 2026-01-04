@@ -13,14 +13,14 @@
     "@next/env": "^16.0.3",
     "axios": "1.12.2",
     "next": "16.1.1",
-    "react": "^18",
+    "react": "^19",
     "react-dom": "^18",
     "test": "3.3.0"
   },
   "devDependencies": {
     "@types/jest": "^29.5.13",
     "@types/node": "^24",
-    "@types/react": "^18",
+    "@types/react": "^19",
     "@types/react-dom": "^18",
     "eslint": "^9",
     "eslint-config-next": "16.0.3",
