@@ -14,14 +14,14 @@
     "@tailwindcss/postcss": "^4.1.18",
     "axios": "1.13.3",
     "next": "16.1.4",
-    "react": "^18",
+    "react": "^19",
     "react-dom": "^18",
     "test": "3.3.0"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
     "@types/node": "^25",
-    "@types/react": "^18",
+    "@types/react": "^19",
     "@types/react-dom": "^18",
     "eslint": "^9",
     "eslint-config-next": "16.1.3",
