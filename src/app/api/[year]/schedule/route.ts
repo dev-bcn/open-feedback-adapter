@@ -4,8 +4,15 @@ import {
     fetchSessionizeData
 } from "@/components/open-feedback-adapter";
 
-export async function GET() {
-    const payload = await fetchSessionizeData(process.env.SESSIONIZE_URL_2025!);
+export async function GET(request: Request, {params}: {params: Promise<{year: string}>}) {
+    const { year } = await params;
+    const sessionizeUrl = process.env[`SESSIONIZE_URL_${year}`];
+    
+    if (!sessionizeUrl) {
+        return NextResponse.json({ error: "Configuration not found for the given year" }, { status: 404 });
+    }
+
+    const payload = await fetchSessionizeData(sessionizeUrl);
 
     const converted = convertSessionizeToOpenFeedback(payload);
     const response = NextResponse.json(converted);
@@ -15,5 +22,4 @@ export async function GET() {
     response.headers.set('Access-Control-Allow-Headers', 'Content-Type');
 
     return response;
-
 }
