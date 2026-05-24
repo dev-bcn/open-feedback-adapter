@@ -28,7 +28,7 @@
     "jest": "^30.4.2",
     "postcss": "^8",
     "tailwindcss": "^4.2.2",
-    "ts-jest": "^29.4.9",
+    "ts-jest": "^29.4.11",
     "typescript": "^5"
   },
   "jest": {
