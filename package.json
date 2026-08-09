@@ -13,7 +13,7 @@
     "@next/env": "^16.3.0",
     "@tailwindcss/postcss": "^4.3.3",
     "axios": "1.19.0",
-    "next": "16.2.9",
+    "next": "16.3.0",
     "react": "^18",
     "react-dom": "^18",
     "test": "3.3.0"
